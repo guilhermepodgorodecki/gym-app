@@ -1,0 +1,140 @@
+import 'package:flutter/material.dart';
+import 'package:material_color_utilities/scheme/scheme.dart';
+import 'package:ola_mundoi/screen/home/color_schemes.g.dart';
+
+void main(List<String> args) {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
+        backgroundColor: Colors.black,
+        body: const MyStatefulWidget(),
+      ),
+      theme: ThemeData(useMaterial3: true, colorScheme: lightColorScheme),
+      darkTheme: ThemeData(useMaterial3: true, colorScheme: darkColorScheme),
+    );
+  }
+}
+
+class MyStatefulWidget extends StatefulWidget {
+  const MyStatefulWidget({Key? key}) : super(key: key);
+
+  @override
+  State<MyStatefulWidget> createState() => _MyStatefulWidgetState();
+}
+
+class _MyStatefulWidgetState extends State<MyStatefulWidget> {
+  bool isVoadorChecked = false;
+  bool isSupinonaBarraChecked = false;
+  bool isSupinoInclinadoChecked = false;
+  bool isCrossOverChecked = false;
+  bool isTricepsCordaChecked = false;
+  bool isTricepsRoldanaChecked = false;
+  bool isTricepsTestaChecked = false;
+  bool isMergulhonoBancoChecked = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Column(
+        children: <Widget>[
+          customCheckboxListTile(
+            title: 'Cadeixa Extensora',
+            value: isVoadorChecked,
+            onChanged: (bool? value) {
+              setState(() {
+                isVoadorChecked = value!;
+              });
+            },
+          ),
+          customCheckboxListTile(
+            title: 'Agachamento Livre',
+            value: isSupinonaBarraChecked,
+            onChanged: (bool? value) {
+              setState(() {
+                isSupinonaBarraChecked = value!;
+              });
+            },
+          ),
+          customCheckboxListTile(
+            title: 'Leg Press',
+            value: isSupinoInclinadoChecked,
+            onChanged: (bool? value) {
+              setState(() {
+                isSupinoInclinadoChecked = value!;
+              });
+            },
+          ),
+          customCheckboxListTile(
+            title: 'Cadeira Flexora',
+            value: isCrossOverChecked,
+            onChanged: (bool? value) {
+              setState(() {
+                isCrossOverChecked = value!;
+              });
+            },
+          ),
+          customCheckboxListTile(
+            title: 'Elevação Lateral',
+            value: isTricepsCordaChecked,
+            onChanged: (bool? value) {
+              setState(() {
+                isTricepsCordaChecked = value!;
+              });
+            },
+          ),
+          customCheckboxListTile(
+            title: 'Elevação Frontal',
+            value: isTricepsRoldanaChecked,
+            onChanged: (bool? value) {
+              setState(() {
+                isTricepsRoldanaChecked = value!;
+              });
+            },
+          ),
+          customCheckboxListTile(
+            title: 'Crucifixo inverso com Halteres',
+            value: isTricepsTestaChecked,
+            onChanged: (bool? value) {
+              setState(() {
+                isTricepsTestaChecked = value!;
+              });
+            },
+          ),
+          customCheckboxListTile(
+            title: 'Remada Alta',
+            value: isMergulhonoBancoChecked,
+            onChanged: (bool? value) {
+              setState(() {
+                isMergulhonoBancoChecked = value!;
+              });
+            },
+          ),
+        ],
+      ),
+    );
+  }
+
+  CheckboxListTile customCheckboxListTile({
+    required String title,
+    required bool value,
+    required void Function(bool? checked) onChanged,
+  }) {
+    return CheckboxListTile(
+      tileColor: Colors.black,
+      title: Text(
+        title,
+        style: const TextStyle(color: Colors.white),
+      ),
+      value: value,
+      onChanged: onChanged,
+    );
+  }
+}
